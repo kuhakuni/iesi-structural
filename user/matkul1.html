@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website EduPTI</title>
+    <link rel="stylesheet" href="matkul.css">
+</head>
+<body>
+    <!-- Membuat navigation bar -->
+    <header>
+        <div class="logo">EduPTI</div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="navbar">
+            <ul style="list-style-type: none;">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="semester1.html" class="active">Materi</a></li>
+                <li><a href="semester2.html">Latihan Soal</a></li>
+                <li><a href="sinaubareng.html">Sinau Bareng</a></li>
+                <li><a class="cta" href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function() {
+            navBar = document.querySelector(".navbar");
+            navBar.classList.toggle("active");
+        }
+    </script>
+
+    <section class="sec">
+        <h2>Mata Kuliah</h2>
+        <div class="search">
+            <form action="" class="searchbar">
+                <input type="text" placeholder="Cari mata kuliah" name="q">
+                <button type="submit"><img src="gambar/search.png"></button>
+            </form>
+        </div>
+        <div class="matkul">
+            <div class="container">
+                <div class="box">
+                    <a href="materi.html">Bahasa Inggris</a>
+                </div>
+                <div class="box">
+                    <a href="materi.html">Pemrograman Dasar</a>
+                </div>
+                <div class="box">
+                    <a href="materi.html">Perkembangan Peserta Didik</a>
+                </div>
+                <div class="box">
+                    <a href="materi.html">Pengantar Keilmuan Komputer</a>
+                </div>
+                <div class="box">
+                    <a href="materi.html">Filsafat dan Ilmu Pendidikan</a>
+                </div>
+                <div class="box">
+                    <a href="materi.html">Arsitektur dan Organisasi Komputer</a>
+                </div>
+            </div>
+        </div>
+</body>
