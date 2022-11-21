@@ -1,5 +1,5 @@
 <?php
-require "functions.php";
+require "../functions.php";
 cekSession();
 $semesters = query("SELECT * FROM semester");
 ?>
@@ -11,7 +11,7 @@ $semesters = query("SELECT * FROM semester");
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Website EduPTI</title>
-    <link rel="stylesheet" href="semester.css" />
+    <link rel="stylesheet" href="../semester.css" />
 </head>
 
 <body>
@@ -46,7 +46,7 @@ $semesters = query("SELECT * FROM semester");
         <div class="container">
             <?php foreach ($semesters as $semester): ?>
             <div class="box">
-                <a href="matkul.php?semester=<?= $semester[
+                <a href="./matkul.php?semester=<?= $semester[
                 	"id_semester"
                 ] ?>"><?= $semester["semester"] ?></a>
             </div>

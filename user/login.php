@@ -1,6 +1,6 @@
 <?php
 require "functions.php";
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["nim"])) {
 	header("Location: ./");
 	exit();
 }

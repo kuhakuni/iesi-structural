@@ -1,5 +1,5 @@
 <?php
-require "functions.php"; 
+require "functions.php";
 cekSession();
 ?>
 
@@ -25,11 +25,11 @@ cekSession();
         </div>
         <nav class="navbar">
             <ul style="list-style-type: none">
-                <li><a href="./" class="active">Home</a></li>
-                <li><a href="./materi.php">Materi</a></li>
-                <li><a href="./latsol.php">Latihan Soal</a></li>
-                <li><a href="./sinaubareng.php">Sinau Bareng</a></li>
-                <li><a class="cta" href="./logout.php">Logout</a></li>
+                <li><a href="/user/" class="active">Home</a></li>
+                <li><a href="/user/materi/semester.php">Materi</a></li>
+                <li><a href="/user/latsol/semester.php">Latihan Soal</a></li>
+                <li><a href="/user/sinaubareng/sinaubareng.php">Sinau Bareng</a></li>
+                <li><a class="cta" href="/user/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

@@ -1,6 +1,11 @@
 <?php
-require "functions.php";
+require "../functions.php";
 cekSession();
+$data = query(
+	"SELECT semester, video_sinau_bareng AS link_video FROM sinau_bareng SB INNER JOIN semester s ON SB.id_semester = s.id_semester"
+);
+$nim = $_SESSION["nim"];
+$checkMentor = query("SELECT * FROM pendaftaran_mentor WHERE NIM = '$nim'");
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +16,7 @@ cekSession();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website EduPTI</title>
-    <link rel="stylesheet" href="sinaubareng.css">
+    <link rel="stylesheet" href="../sinaubareng.css">
 </head>
 
 <body>
@@ -25,11 +30,11 @@ cekSession();
         </div>
         <nav class="navbar">
             <ul style="list-style-type: none">
-                <li><a href="./">Home</a></li>
-                <li><a href="./materi.php">Materi</a></li>
-                <li><a href="./latsol.php">Latihan Soal</a></li>
-                <li><a href="./sinaubareng.php" class="active">Sinau Bareng</a></li>
-                <li><a class="cta" href="./logout.php">Logout</a></li>
+                <li><a href="/user/">Home</a></li>
+                <li><a href="/user/materi/semester.php">Materi</a></li>
+                <li><a href="/user/latsol/semester.php">Latihan Soal</a></li>
+                <li><a href="/user/sinaubareng/sinaubareng.php" class="active">Sinau Bareng</a></li>
+                <li><a class="cta" href="/user/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -55,7 +60,11 @@ cekSession();
         <div class="pendaftaran">
             <div class="content">
                 <h3>Pendaftaran Mentor Sinau Bareng</h3>
-                <a class="daftar" href="#">Daftar Sekarang</a>
+                <?php if (!$checkMentor): ?>
+                <a class="daftar" href="./formdaftar.php">Daftar Sekarang</a>
+                <?php else: ?>
+                <a class="daftar">Anda telah terdaftar</a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -63,24 +72,13 @@ cekSession();
 
             <div class="record">
                 <div class="container">
+                    <?php foreach ($data as $item): ?>
                     <div class="box">
-                        <a href="#">Semester 1</a>
+                        <a href="<?= $item["link_video"] ?>"><?= $item[
+	"semester"
+] ?></a>
                     </div>
-                    <div class="box">
-                        <a href="#">Semester 2</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">Semester 3</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">Semester 4</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">Semester 5</a>
-                    </div>
-                    <div class="box">
-                        <a href="#">Semester 6</a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
     </section>

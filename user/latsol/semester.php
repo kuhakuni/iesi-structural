@@ -1,5 +1,5 @@
 <?php
-require "functions.php";
+require "../functions.php";
 cekSession();
 $semesters = query("SELECT * FROM semester");
 ?>
@@ -11,7 +11,7 @@ $semesters = query("SELECT * FROM semester");
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Website EduPTI</title>
-    <link rel="stylesheet" href="semester.css" />
+    <link rel="stylesheet" href="../semester.css" />
 </head>
 
 <body>
@@ -26,8 +26,8 @@ $semesters = query("SELECT * FROM semester");
         <nav class="navbar">
             <ul style="list-style-type: none">
                 <li><a href="/user/">Home</a></li>
-                <li><a href="/user/materi/semester.php" class="active">Materi</a></li>
-                <li><a href="/user/latsol/semester.php">Latihan Soal</a></li>
+                <li><a href="/user/materi/semester.php">Materi</a></li>
+                <li><a href="/user/latsol/semester.php" class="active">Latihan Soal</a></li>
                 <li><a href="/user/sinaubareng/sinaubareng.php">Sinau Bareng</a></li>
                 <li><a class="cta" href="/user/logout.php">Logout</a></li>
             </ul>
@@ -46,7 +46,7 @@ $semesters = query("SELECT * FROM semester");
         <div class="container">
             <?php foreach ($semesters as $semester): ?>
             <div class="box">
-                <a href="matkul.php?semester=<?= $semester[
+                <a href="./matkul.php?semester=<?= $semester[
                 	"id_semester"
                 ] ?>"><?= $semester["semester"] ?></a>
             </div>

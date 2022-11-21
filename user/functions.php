@@ -9,8 +9,8 @@ if (mysqli_connect_errno()) {
 session_start();
 function cekSession()
 {
-	if (!isset($_SESSION["user"])) {
-		header("Location: login.php");
+	if (!isset($_SESSION["nim"])) {
+		header("Location: /user/login.php");
 		exit();
 	}
 }
@@ -40,7 +40,7 @@ function createAkun($data)
     		VALUES ('$nim','$nama','$password','$email')"
 		);
 		if ($check) {
-			$_SESSION["user"] = true;
+			$_SESSION["nim"] = $nim;
 			echo "
             <script>
                 window.location.reload();
@@ -78,7 +78,7 @@ function loginAkun($data)
         ";
 	} else {
 		if (password_verify($password, $check["password"])) {
-			$_SESSION["user"] = true;
+			$_SESSION["nim"] = $nim;
 			echo "
             <script>
                 window.location.reload();
