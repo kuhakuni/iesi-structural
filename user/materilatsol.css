@@ -191,7 +191,7 @@ header {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .container .box {
@@ -231,4 +231,10 @@ header {
 	color: #491551;
 	background: #fff;
 	font-weight: 600;
+}
+.empty h4 {
+	margin-top: 50px;
+	text-align: center;
+	color: #fff;
+	font-weight: 500;
 }

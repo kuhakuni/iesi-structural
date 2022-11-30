@@ -54,7 +54,7 @@ cekSession();
                             Berisi kumpulan materi kuliah dari berbagai
                             semester dan mata kuliah
                         </p>
-                        <a href="./materi.php">Selengkapnya</a>
+                        <a href="./materi/semester.php">Selengkapnya</a>
                     </div>
                 </div>
                 <div class="box">
@@ -65,7 +65,7 @@ cekSession();
                             Berisi kumpulan latihan soal dari berbagai
                             semester dan mata kuliah
                         </p>
-                        <a href="./latsol.php">Selengkapnya</a>
+                        <a href="./latsol/semester.php">Selengkapnya</a>
                     </div>
                 </div>
                 <div class="box">
@@ -76,7 +76,7 @@ cekSession();
                             Berisi pendaftaran mentor dan kumpulan video
                             record Sinau Bareng
                         </p>
-                        <a href="./sinaubareng.php">Selengkapnya</a>
+                        <a href="./sinaubareng/sinaubareng.php">Selengkapnya</a>
                     </div>
                 </div>
             </div>

@@ -69,13 +69,21 @@ if (isset($_GET["q"])) {
         </div>
         <div class="matkul">
             <div class="container">
-                <?php foreach ($matkul as $item): ?>
+                <?php if (!empty($matkul)):
+                	foreach ($matkul as $item): ?>
                 <div class="box">
                     <a href="latsol.php?matkul=<?= $item[
                     	"id_matkul"
                     ] ?>"><?= $item["nama_matkul"] ?></a>
                 </div>
-                <?php endforeach; ?>
+                <?php endforeach;
+                else:
+                	 ?>
+                <div class="empty">
+                    <h4>Mata Kuliah Tidak Ditemukan</h4>
+                </div>
+                <?php
+                endif; ?>
             </div>
         </div>
 </body>

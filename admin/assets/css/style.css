@@ -77,8 +77,14 @@ body {
   color: var(--white);
 }
 
+
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
+  color: var(--purple);
+}
+
+.navigation ul li.active a,
+.navigation ul li.actived a {
   color: var(--purple);
 }
 
@@ -169,7 +175,7 @@ body {
   cursor: pointer;
 }
 
-.admin {
+.user {
   position: relative;
   width: 40px;
   height: 40px;
@@ -178,7 +184,7 @@ body {
   cursor: pointer;
 }
 
-.admin img {
+.user img {
   position: absolute;
   top: 0;
   left: 0;
@@ -207,14 +213,14 @@ body {
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-.content form .admin-details{
+.content form .user-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 10px 0 12px 20px;
 }
 
-form .admin-details .input-box{
+form .user-details .input-box{
   margin-bottom: 10px;
   width: calc(100% - 20px);
 }
@@ -225,7 +231,7 @@ form .input-box span.details{
   margin-bottom: 5px;
 }
 
-.admin-details .input-box input{
+.user-details .input-box input{
   height: 40px;
   width: 100%;
   outline: none;
@@ -237,21 +243,22 @@ form .input-box span.details{
   transition: all 0.3s ease;
 }
 
-.admin-details .input-box input:focus,
-.admin-details .input-box input:valid{
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
   border-color: #9b59b6;
 }
 
 form .button{
   height: 45px;
-  margin: 35px 0
+  margin: 20px 20px;
+  margin-bottom: 50px;
+
 }
 
 form .button input{
   height: 100%;
-  width: 95%;
+  width: 100%;
   border-radius: 5px;
-  margin: 10px 0 12px 20px;
   border: none;
   color: #fff;
   font-size: 18px;
@@ -259,30 +266,30 @@ form .button input{
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: #491551;
 }
 
 form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  background: #ec8db5;
 }
 
 @media(max-width: 584px) {
   .main {
     max-width: 100%;
   }
-  form .admin-details .input-box{
+  form .user-details .input-box{
     margin-bottom: 15px;
     width: 100%;
   }
   form .category{
     width: 100%;
   }
-  .content form .admin-details{
+  .content form .user-details{
     max-height: 300px;
     overflow-y: scroll;
   }
-  .admin-details::-webkit-scrollbar{
+  .user-details::-webkit-scrollbar{
     width: 5px;
   }
 
@@ -294,6 +301,11 @@ form .button input:hover{
 }
 
 /* ======================= Cards ====================== */
+.card a {
+  text-decoration: none;
+  color: black;
+}
+
 .cardBox {
   position: relative;
   width: 100%;
@@ -324,18 +336,21 @@ form .button input:hover{
 .cardBox .card .cardName {
   color: var(--black1);
   font-size: 1.1rem;
+  width: 20px;
   margin-top: 5px;
 }
 
 .cardBox .card .iconBx {
   font-size: 3.5rem;
   color: var(--black1);
+  display: flex;
 }
 
 .cardBox .card:hover {
   background: var(--pink);
 }
 .cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName a,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
   color: var(--white);
@@ -528,7 +543,7 @@ form .button input:hover{
   .cardHeader h2 {
     font-size: 20px;
   }
-  .admin {
+  .user {
     min-width: 40px;
   }
   .navigation {
@@ -549,4 +564,66 @@ form .button input:hover{
     right: 0;
     left: initial;
   }
+}
+
+.list {
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.containerlist {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.containerlist h1 {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.containerlist .box {
+  position: relative;
+  width: 1200px;
+  padding: 20px;
+  padding-left: 50px;
+  background: #491551;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.containerlist .box h3 {
+  font-size: 22px;
+  font-weight: 600;
+  padding-right: 10px;
+  color: #fff;
+}
+.containerlist .box a {
+  text-decoration: none;
+  padding: 4px 20px;
+  color: #491551;
+  background :#ec8db5;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.containerlist .box a:hover {
+  color: #491551;
+  background: #fff;
+  font-weight: 600;
 }

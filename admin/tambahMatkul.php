@@ -1,30 +1,59 @@
+<?php
+require "functions.php";
+cekSession();
+$semester = query("SELECT * FROM semester");
+if (isset($_POST["tambah"])) {
+	$id_semester = $_POST["semester"];
+	$nama_matkul = $_POST["matkul"];
+	$check = mysqli_query(
+		$conn,
+		"INSERT INTO mata_kuliah (id_semester, nama_matkul)
+			VALUES ('$id_semester','$nama_matkul')"
+	);
+	if ($check) {
+		echo "
+        <script>
+        alert('Mata kuliah berhasil ditambahkan!');
+        window.location.href= './';
+        </script>
+        ";
+		exit();
+	} else {
+		echo "
+        <script>
+        alert('Mata kuliah gagal ditambahkan!');
+        window.history.back();
+        </script>
+        ";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Latihan Soal</title>
+    <title>Tambah Mata Kuliah</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
+
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
-                        </span>
+                    <a href="./">
                         <span class="title">EduPTI</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="./">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -33,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahMatkul.html">
+                    <a href="tambahMatkul.php">
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
@@ -42,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahMateri.html">
+                    <a href="tambahMateri.php">
                         <span class="icon">
                             <ion-icon name="documents-outline"></ion-icon>
                         </span>
@@ -51,7 +80,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahLatsol.html">
+                    <a href="tambahLatsol.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -60,16 +89,23 @@
                 </li>
 
                 <li>
-                    <a href="tambahVideo.html">
+                    <a href="tambahVideo.php">
                         <span class="icon">
                             <ion-icon name="videocam-outline"></ion-icon>
                         </span>
                         <span class="title">Tambah Video</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="listDataMentor.php">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Data Calon Mentor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="logout.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -85,61 +121,45 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
-                <div class="admin">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
             </div>
 
-            <div class="title">Tambah Latihan Soal</div>
+            <div class="title">Tambah Mata Kuliah</div>
             <div class="content">
-                <form action="#">
-                    <div class="admin-details">
+                <form action="" method="POST">
+                    <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Soal</span>
-                            <input type="text" placeholder="Masukkan judul soal" required>
+                            <span class="details">Mata Kuliah</span>
+                            <input type="text" placeholder="Masukkan nama mata kuliah" name="matkul" required>
                         </div>
 
                         <div class="input-box">
-                            <span class="details">Materi</span>
-                            <input type="text" placeholder="Masukkan nama materi" required>
-                        </div>
-                        
-                        <div class="input-box">
-                            <span class="details">Mata Kuliah</span>
-                            <input type="text" placeholder="Masukkan nama mata kuliah" required>
-                        </div>
-                        
-                        <div class="input-box">
                             <span class="details">Semester</span>
-                            <select>
-                                <option>Semester 1</option>
-                                <option>Semester 2</option>
-                                <option>Semester 3</option>
-                                <option>Semester 4</option>
-                                <option>Semester 5</option>
-                                <option>Semester 6</option>
+                            <select name="semester">
+                                <?php foreach ($semester as $item): ?>
+                                <option value="<?= $item[
+                                	"id_semester"
+                                ] ?>"><?= $item["semester"] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
                     <div class="button">
-                        <input type="submit" value="Submit">
+                        <input type="submit" name="tambah" value="Submit">
                     </div>
                 </form>
-    </div>
+            </div>
 
         </div>
     </div>
-    
+
 
 
 
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"> </script>
+
 </body>
+
 </html>

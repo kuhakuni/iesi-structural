@@ -2,7 +2,7 @@
 require "../functions.php";
 cekSession();
 $data = query(
-	"SELECT semester, video_sinau_bareng AS link_video FROM sinau_bareng SB INNER JOIN semester s ON SB.id_semester = s.id_semester"
+	"SELECT judul, video_sinau_bareng AS link_video FROM sinau_bareng "
 );
 $nim = $_SESSION["nim"];
 $checkMentor = query("SELECT * FROM pendaftaran_mentor WHERE NIM = '$nim'");
@@ -75,7 +75,7 @@ $checkMentor = query("SELECT * FROM pendaftaran_mentor WHERE NIM = '$nim'");
                     <?php foreach ($data as $item): ?>
                     <div class="box">
                         <a href="<?= $item["link_video"] ?>"><?= $item[
-	"semester"
+	"judul"
 ] ?></a>
                     </div>
                     <?php endforeach; ?>

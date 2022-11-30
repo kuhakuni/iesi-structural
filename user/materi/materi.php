@@ -68,14 +68,22 @@ if (isset($_GET["search"])) {
 
         <div class="matkul">
             <div class="container">
-                <?php foreach ($materi as $item): ?>
+                <?php if (!empty($materi)):
+                	foreach ($materi as $item): ?>
                 <div class="box">
                     <h3><?= $item["judul"] ?></h3>
                     <a target="_blank" rel="noopener noreferrer " href="<?= $item[
                     	"link_file"
                     ] ?>">Lihat</a>
                 </div>
-                <?php endforeach; ?>
+                <?php endforeach;
+                else:
+                	 ?>
+                <div class="empty">
+                    <h4>Materi Tidak Ditemukan</h4>
+                </div>
+                <?php
+                endif; ?>
             </div>
         </div>
     </section>

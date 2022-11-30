@@ -191,7 +191,7 @@ header {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .container .box {
@@ -227,4 +227,10 @@ header {
 
 .container .box:hover {
 	background: whitesmoke;
+}
+.empty h4 {
+	margin-top: 50px;
+	text-align: center;
+	color: #fff;
+	font-weight: 500;
 }

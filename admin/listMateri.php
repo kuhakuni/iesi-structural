@@ -1,3 +1,8 @@
+<?php
+require "functions.php";
+cekSession();
+$allMateri = query("SELECT * FROM materi");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>List Materi</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -16,16 +21,13 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
-                        </span>
+                    <a href="./">
                         <span class="title">EduPTI</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="./">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -34,7 +36,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahMatkul.html">
+                    <a href="tambahMatkul.php">
                         <span class="icon">
                             <ion-icon name="book-outline"></ion-icon>
                         </span>
@@ -43,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahMateri.html">
+                    <a href="tambahMateri.php">
                         <span class="icon">
                             <ion-icon name="documents-outline"></ion-icon>
                         </span>
@@ -52,7 +54,7 @@
                 </li>
 
                 <li>
-                    <a href="tambahLatsol.html">
+                    <a href="tambahLatsol.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -61,16 +63,23 @@
                 </li>
 
                 <li>
-                    <a href="tambahVideo.html">
+                    <a href="tambahVideo.php">
                         <span class="icon">
                             <ion-icon name="videocam-outline"></ion-icon>
                         </span>
                         <span class="title">Tambah Video</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="#">
+                    <a href="listDataMentor.php">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Data Calon Mentor</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="logout.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -86,67 +95,33 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
-                <div class="admin">
-                    <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
             </div>
 
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">15</div>
-                        <div class="cardName">Mata Kuliah</div>
+            <!-- ======================= List ================== -->
+            <div class="list">
+                <div class="containerlist">
+                    <h1>List Materi</h1>
+                    <?php foreach ($allMateri as $item): ?>
+                    <div class="box">
+                        <h3><?= $item["judul"] ?></h3>
+                        <div class="button">
+                            <a href="editMateri.php?id=<?= $item[
+                            	"id_materi"
+                            ] ?>">Edit</a>
+                            <a onclick="return confirm('Apakah kamu yakin akan menghapus mata kuliah ini?')" href="deleteData.php?type=materi&id=<?= $item[
+                            	"id_materi"
+                            ] ?>">Hapus</a>
+                        </div>
                     </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">50</div>
-                        <div class="cardName">Materi</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="documents-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">30</div>
-                        <div class="cardName">Latihan Soal</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="document-text-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">5</div>
-                        <div class="cardName">Sinau Bareng</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="videocam-outline"></ion-icon>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- =========== Scripts =========  -->
+            <script src="assets/js/main.js"></script>
 
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+            <!-- ====== ionicons ======= -->
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

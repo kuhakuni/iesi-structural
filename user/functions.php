@@ -68,7 +68,7 @@ function loginAkun($data)
 {
 	$nim = htmlspecialchars($data["nim"]);
 	$password = htmlspecialchars($data["password"]);
-	$check = query("SELECT nim, password FROM mahasiswa WHERE nim = '$nim'")[0];
+	$check = query("SELECT nim, password FROM mahasiswa WHERE nim = '$nim'");
 	if (!$check) {
 		echo "
         <script>
@@ -77,7 +77,7 @@ function loginAkun($data)
         </script>
         ";
 	} else {
-		if (password_verify($password, $check["password"])) {
+		if (password_verify($password, $check[0]["password"])) {
 			$_SESSION["nim"] = $nim;
 			echo "
             <script>
